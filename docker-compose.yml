@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  bitcoind:
+    image: kylemanna/bitcoind:latest
+    ports:
+      - "18333:18333"
+    volumes:
+      - ./bitcoin:/bitcoin/.bitcoin
