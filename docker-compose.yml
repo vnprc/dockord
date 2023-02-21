@@ -12,7 +12,8 @@ services:
       - ./bitcoin:/bitcoin/.bitcoin
 
   ord:
-    build: ./ordinals
+    build:
+      context: ./ordinals
     volumes:
       - bitcoin:/bitcoin/.bitcoin
       - ./ordinals:/ordinals

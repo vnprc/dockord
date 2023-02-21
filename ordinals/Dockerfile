@@ -1,5 +1,7 @@
 FROM frolvlad/alpine-glibc
 
+RUN apk add --no-cache curl bash
+
 EXPOSE 8080
 
 WORKDIR /ordinals
@@ -9,6 +11,8 @@ RUN tar -zxvf ord.tar.gz
 RUN chmod +x /ordinals/ord
 RUN ls -la
 ENV RUST_LOG=debug
-ENV PATH="$PATH:/ordinals/ord"
+ENV PATH="/ordinals:$PATH"
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+SHELL ["/bin/bash", "-c"]
+
+CMD ["bash"]
