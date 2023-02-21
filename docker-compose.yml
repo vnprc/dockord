@@ -1,5 +1,8 @@
 version: '3'
 
+volumes:
+  bitcoin:
+
 services:
   bitcoind:
     image: kylemanna/bitcoind:latest
@@ -7,3 +10,12 @@ services:
       - "18333:18333"
     volumes:
       - ./bitcoin:/bitcoin/.bitcoin
+
+  ord:
+    build: ./ordinals
+    volumes:
+      - bitcoin:/bitcoin/.bitcoin
+      - ./ordinals:/ordinals
+    depends_on:
+      - bitcoind
+    tty: true
