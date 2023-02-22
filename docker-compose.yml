@@ -15,8 +15,8 @@ services:
     build:
       context: ./ordinals
     volumes:
-      - bitcoin:/bitcoin/.bitcoin
-      - ./ordinals:/ordinals
+      - ./bitcoin:/bitcoin/.bitcoin
+      - ./ordinals/index-data:/ordinals/index-data
     depends_on:
       - bitcoind
     tty: true
