@@ -2,6 +2,8 @@ FROM frolvlad/alpine-glibc
 
 RUN apk add --no-cache curl bash
 
+SHELL ["/bin/bash", "-c"]
+
 EXPOSE 8080
 
 WORKDIR /ordinals
@@ -13,6 +15,8 @@ RUN ls -la
 ENV RUST_LOG=debug
 ENV PATH="/ordinals:$PATH"
 
-SHELL ["/bin/bash", "-c"]
+ADD https://bitcoincore.org/bin/bitcoin-core-24.0.1/bitcoin-24.0.1-x86_64-linux-gnu.tar.gz /bitcoin/bitcoin.tar.gz
+RUN tar -zxvf /bitcoin/bitcoin.tar.gz
+RUN mv bitcoin-24.0.1/bin/bitcoin-cli /usr/local/bin
 
 CMD ["bash"]
