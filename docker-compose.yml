@@ -16,7 +16,14 @@ services:
       context: ./ordinals
     volumes:
       - ./bitcoin:/bitcoin/.bitcoin
+      - ./ordinals/init.sh:/usr/local/bin/init.sh
+      - ./ordinals/dickbutt.jpg:/ordinals/dickbutt.jpg
       - ./ordinals/index-data:/ordinals/index-data
     depends_on:
       - bitcoind
     tty: true
+    healthcheck:
+      test: ["/bin/sh", "-c", "bitcoin-cli --rpcconnect=bitcoind --rpcport=8332 --rpccookiefile=/bitcoin/.bitcoin/regtest/.cookie getblockcount"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
