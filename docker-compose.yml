@@ -18,9 +18,10 @@ services:
       - ./bitcoin:/bitcoin/.bitcoin
       - ./ordinals/init.sh:/usr/local/bin/init.sh
       - ./ordinals/dickbutt.jpg:/ordinals/dickbutt.jpg
-      - ./ordinals/index-data:/ordinals/index-data
     depends_on:
       - bitcoind
+    ports:
+      - "0.0.0.0:8080:8080"
     tty: true
     healthcheck:
       test: ["/bin/sh", "-c", "bitcoin-cli --rpcconnect=bitcoind --rpcport=8332 --rpccookiefile=/bitcoin/.bitcoin/regtest/.cookie getblockcount"]

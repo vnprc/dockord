@@ -20,4 +20,4 @@ bitcoin-cli --rpcconnect=bitcoind --rpcport=8332 --rpccookiefile=/bitcoin/.bitco
 
 # run the ord explorer server
 # /ordinals/ord -r --cookie-file /bitcoin/.bitcoin/regtest/.cookie --rpc-url http://bitcoind:8332 server
-read -p "Press any key to exit..."
+/ordinals/ord -r --cookie-file /bitcoin/.bitcoin/regtest/.cookie --rpc-url http://bitcoind:8332 server --http --http-port 8080 --address 0.0.0.0
